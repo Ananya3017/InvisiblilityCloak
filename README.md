@@ -24,7 +24,7 @@ It replaces the color of the cloak with the background, creating the illusion of
 git clone https://github.com/Ananya3017/InvisiblilityCloak.git
 cd InvisiblilityCloak
 ```
-
+---
 ## ⌨️ Controls (for cloak_custom.py)
 ```bash 
 Key	Action
@@ -37,4 +37,5 @@ p	Purple cloak
 b	Re-capture background
 ESC	Exit program
 ```
+
 
