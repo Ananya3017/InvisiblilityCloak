@@ -26,6 +26,7 @@ cd InvisiblilityCloak
 ```
 
 ⌨️ Controls (for cloak_custom.py)
+```bash 
 Key	Action
 r	Red cloak
 g	Green cloak
@@ -35,3 +36,4 @@ o	Orange cloak
 p	Purple cloak
 b	Re-capture background
 ESC	Exit program
+```
