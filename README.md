@@ -25,7 +25,7 @@ git clone https://github.com/Ananya3017/InvisiblilityCloak.git
 cd InvisiblilityCloak
 ```
 
-⌨️ Controls (for cloak_custom.py)
+## ⌨️ Controls (for cloak_custom.py)
 ```bash 
 Key	Action
 r	Red cloak
@@ -37,3 +37,4 @@ p	Purple cloak
 b	Re-capture background
 ESC	Exit program
 ```
+
