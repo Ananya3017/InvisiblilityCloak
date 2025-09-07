@@ -4,13 +4,25 @@ import time
 
 # ------------------- Predefined HSV Ranges -------------------
 COLOR_RANGES = {
-    "red":   [(np.array([0, 120, 70]), np.array([10, 255, 255])),
-              (np.array([170, 120, 70]), np.array([180, 255, 255]))],
-    "blue":  [(np.array([94, 80, 2]), np.array([126, 255, 255]))],
-    "green": [(np.array([40, 52, 72]), np.array([80, 255, 255]))],
-    "yellow":[(np.array([20, 100, 100]), np.array([30, 255, 255]))],
-    "orange":[(np.array([10, 100, 20]), np.array([25, 255, 255]))],
-    "purple":[(np.array([129, 50, 70]), np.array([158, 255, 255]))],
+    "red": [
+        (np.array([0, 120, 70]), np.array([10, 255, 255])),
+        (np.array([170, 120, 70]), np.array([180, 255, 255]))
+    ],
+    "blue": [
+        (np.array([90, 80, 2]), np.array([130, 255, 255]))
+    ],
+    "green": [
+        (np.array([40, 40, 40]), np.array([80, 255, 255]))
+    ],
+    "yellow": [
+        (np.array([20, 100, 100]), np.array([35, 255, 255]))
+    ],
+    "orange": [
+        (np.array([10, 100, 20]), np.array([25, 255, 255]))
+    ],
+    "black": [
+        (np.array([0, 0, 0]), np.array([180, 255, 30]))  # Low brightness & saturation
+    ],
 }
 
 # Default cloak color
@@ -68,10 +80,13 @@ while cap.isOpened():
     cv2.imshow("🎭 Cloak Mask (debug)", mask)
 
     # Key controls
-    key = cv2.waitKey(1) & 0xFF
+    key = cv2.waitKey(30) & 0xFF
+    if key != 255:
+        print("Pressed:", chr(key))  # Debugging print
+
     if key == 27:  # ESC = quit
         break
-    elif key == ord('b'):  # recapture background
+    elif key == ord('c'):  # recapture background
         print("♻ Re-capturing background...")
         for _ in range(60):
             ret, bg = cap.read()
@@ -79,18 +94,26 @@ while cap.isOpened():
                 bg = cv2.flip(bg, 1)
         bg = bg.copy()
         print("✅ Background updated")
+
+    # Cloak color hotkeys
     elif key == ord('r'):
         cloak_color = "red"
+        print("🔴 Cloak color changed to RED")
     elif key == ord('g'):
         cloak_color = "green"
+        print("🟢 Cloak color changed to GREEN")
     elif key == ord('b'):
         cloak_color = "blue"
+        print("🔵 Cloak color changed to BLUE")
     elif key == ord('y'):
         cloak_color = "yellow"
+        print("🟡 Cloak color changed to YELLOW")
     elif key == ord('o'):
         cloak_color = "orange"
-    elif key == ord('p'):
-        cloak_color = "purple"
+        print("🟠 Cloak color changed to ORANGE")
+    elif key == ord('k'):
+        cloak_color = "black"
+        print("⚫ Cloak color changed to BLACK")
 
 cap.release()
 cv2.destroyAllWindows()
